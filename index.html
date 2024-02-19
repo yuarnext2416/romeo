@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>¿Dónde te gustaría pasar un lindo momento?</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    h1 {
+      text-align: center;
+    }
+    .options {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 20px;
+    }
+    .option {
+      flex: 1;
+      text-align: center;
+      padding: 20px;
+      border: 2px solid #ccc;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    .option:hover {
+      background-color: #f0f0f0;
+    }
+    .selected {
+      background-color: #ffcccc !important;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>¿Dónde te gustaría pasar un lindo momento?</h1>
+    <div class="options">
+      <div class="option" onclick="selectOption('Le coco cafe')">Le coco cafe</div>
+      <div class="option" onclick="selectOption('Crepes & Waffles')">Crepes & Waffles</div>
+      <div class="option" onclick="selectOption('La hamburguesería')">La hamburguesería</div>
+    </div>
+  </div>
+
+  <script>
+    function selectOption(option) {
+      // Enviar la selección del usuario al servidor
+      sendSelection(option);
+    }
+
+    function sendSelection(option) {
+      // Enviar la selección al servidor utilizando AJAX
+      var xhr = new XMLHttpRequest();
+      xhr.open('POST', '/selection', true);
+      xhr.setRequestHeader('Content-Type', 'application/json');
+      xhr.send(JSON.stringify({ selection: option }));
+    }
+  </script>
+</body>
+</html>
